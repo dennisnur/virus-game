@@ -20,6 +20,7 @@ body {
   min-height: 100vh;
   background-color: var(--colorAncent);
   color: var(--colorSecondary);
+  text-align:center;
   transition: 0.5s ease-in;
 }
 
@@ -113,7 +114,7 @@ body {
 @media only screen and (max-width: 500px) {
   .container {
     flex-direction: column;
-    margin: 0 15px;
+    margin: 0px 15px;
   }
   .menu {
     margin: 15px 15px 0 15px;
