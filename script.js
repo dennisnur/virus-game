@@ -2,16 +2,34 @@ const board = document.querySelector('.board');
 const colorGame = document.querySelector('.selected-color');
 const textScore = document.querySelector('.score');
 const message = document.querySelector('.message');
+const reloadButton = document.querySelector('.reload');
+const gameScore = document.querySelector('.game-score');
+const gameInfo = document.querySelector('.game-info');
+const gameWon = document.querySelector('.game-won');
+const time = document.querySelector('.time');
+const rank = document.querySelector('.rank');
+const greeting = document.querySelector('.greeting');
+const labelReload = document.querySelector('.label-reload');
 
 const colors = [
   '#9369C6', '#54B5D2', '#B7D332' , '#FAF057', '#F9AF15', '#EE4C52'
 ]
-
-let score = 0;
-
+const rankTitle = [
+  '&#127775; &#127775; &#127775; &#127775; &#127775;',
+  '&#127775; &#127775; &#127775; &#127775;',
+  '&#127775; &#127775; &#127775;',
+  '&#127775; &#127775;',
+  '&#127775;',
+]
+let score = 100;
 let selectedColor = colors[(Math.floor(Math.random() * colors.length) + 1)-1];
+let second = 0;
+let minute = 0;
+let clearTime;
+
+reloadButton.addEventListener('click',reloadPage);
+
 selectedColor = toRGB(selectedColor)
-console.log(selectedColor);
 colorGame.style.backgroundColor = selectedColor;
 
 for (var i = 0; i < 100; i++) {
@@ -20,10 +38,14 @@ for (var i = 0; i < 100; i++) {
 
 animateLight();
 
+setTimeout(()=>{
+  starTime();
+},3000)
+
 function createBox(){
   let box = document.createElement('div');
   box.className = 'box';
-  box.style.transition = `${Math.floor(Math.random() * 5) + 1}s ease`
+  box.style.transition = `${Math.floor(Math.random() * 3) + 1}s ease`
   board.appendChild(box);
 }
 
@@ -37,13 +59,20 @@ function animateLight(){
 
     item.addEventListener('click',() => {
       if (item.style.backgroundColor === selectedColor) {
-        score++
+        score--
         textScore.innerHTML = `${score}`;
         item.remove();
         if (score == "50") {
-          message.innerHTML = "Is half of virus is already destroy. Keep going !.";
-        }else if (score == "100") {
-          message.innerHTML = "Cool bro you save the entire world &#127758;.";
+          message.innerHTML = "Half of virus is already destroy. Keep going! &#128558;.";
+        }else if (score == "0") {
+          gameInfo.style.display = 'none';
+          gameInfo.style.display = 'none';
+          gameWon.style.minHeight = '25vh';
+          greeting.innerHTML = "Congratulations!";
+          pickRank()
+          reloadButton.style.display = 'block';
+          labelReload.innerHTML = 'Play again ?';
+          clearTimeout(clearTime);
         }
       }
     })
@@ -102,4 +131,43 @@ function toDecimal(channel){
     result = channel[i] * 16**1 + channel[i+1] * 16**0;
   }
   return result;
+}
+
+function reloadPage(){
+  window.location.reload();
+}
+
+function starTime(){
+  if (second === 60) {
+    second = 0;
+    minute += 1;
+  }
+  mins = (minute < 10) ? ('0' + minute + ':') : (minute + ':');
+  secs = (second < 10) ? ('0' + second) : (second);
+  if(minute > 0) {
+    time.innerHTML = `${mins}${secs}`
+  }else {
+    time.innerHTML = `${secs}`
+  }
+  second++;
+  clearTime = setTimeout(starTime, 1000);
+}
+
+function pickRank(){
+  if (minute == 0 && second >= 0 && second <= 45) {
+    rank.innerHTML = rankTitle[0];
+    message.innerHTML = "You have strong immunity, to fight virus. &#128157;";
+  }else if (minute == 1 && second >= 0 && second <= 15) {
+    rank.innerHTML = rankTitle[1];
+    message.innerHTML = "You have good immunity, to fight virus. &#128150;";
+  }else if (minute == 1 && second >= 0 && second <= 30) {
+    rank.innerHTML = rankTitle[2];
+    message.innerHTML = "You have medium immunity, to fight virus. &#128155;";
+  }else if (minute == 1 && second >= 0 && second <= 45) {
+    rank.innerHTML = rankTitle[3];
+    message.innerHTML = "You have low immunity, to fight virus. &#128148;";
+  }else if (minute >= 2) {
+    rank.innerHTML = rankTitle[4];
+    message.innerHTML = "You need more nutrition, to fight virus. &#128420;";
+  }
 }
