@@ -4,25 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Enter title</title>
+  <title>Virus Game</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="app icon" href=".ico">
 </head>
 <body>
   <header>
     <h1 class="project-title">Trinity Project during Quarantine</h1>
   </header>
   <div class="container">
-    <h3 class="app-title">Clear The Virus Game</h3>
+    <h3 class="app-title">Virus Game</h3>
     <div class="game-info">
-      <span>The Virus</span>
+      <span>Virus to destroy.</span>
       <div class="selected-color"></div>
-      <span>Click virus with same color, to get score and save the world. &#127758;</span>
+      <span>Click virus with same color, to destroy it.</span>
+      <span>Remember virus is <span class="warning">evolving.</span></span>
     </div>
     <div class="game-score">
-      <span>Score</span>
-      <span class="score">0</span>
+      <span>Virus Remaining: <span class="score">100</span></span>
+      <span>Time Elapse: <span class="time">00:00</span></span>
     </div>
-    <span class="message"></span>
+    <div class="game-won">
+      <span class="greeting"></span>
+      <div class="rank"></div>
+      <span class="message"></span>
+      <button class="reload">&#8634;</button>
+      <span class="label-reload"></span>
+    </div>
     <div class="board">
     </div>
   </div>
