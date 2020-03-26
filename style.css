@@ -20,7 +20,7 @@ body {
   min-height: 100vh;
   background-color: var(--colorAncent);
   color: var(--colorSecondary);
-  text-align:center;
+  text-align: center;
   transition: 0.5s ease-in;
 }
 
@@ -38,19 +38,64 @@ body {
   min-height: 85vh;
 }
 
-.game-info, .game-score {
+.game-info, .game-score, .game-won {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   min-height: 5vh;
+  min-width: 300px;
 }
+
+.warning {
+  color: orange;
+}
+
+.game-won {
+  min-height: 0;
+  flex-direction: column;
+}
+
+.reload {
+  padding: 5px;
+  border-radius: 50%;
+  border: none;
+  width: 30px;
+  font-weight: bold;
+  font-size: 12pt;
+  cursor: pointer;
+  background: red;
+  color: white;
+  display: none;
+  transition: 0.5s ease;
+}
+
+.reload:focus {
+  outline: none;
+}
+
+.reload:hover {
+  background-color: darkred;
+}
+
+.reload:active {
+  transform: scale(1.2);
+}
+
 .game-info{
-    margin: 10px 0;
+  margin: 10px 0;
+  flex-direction: column;
 }
+
+.game-score {
+  flex-direction: row;
+}
+
 .score {
-  color: red;
-  font-size: 16pt;
+  color: yellow;
+}
+
+.time {
+  color: skyblue;
 }
 
 .board {
@@ -69,8 +114,8 @@ body {
   border-radius: 50%;
   margin: 3px;
   cursor: pointer;
+  outline: none;
 }
-
 
 /* Love icon */
 .love{
@@ -116,7 +161,6 @@ body {
 @media only screen and (max-width: 500px) {
   .container {
     flex-direction: column;
-    margin: 0px 15px;
   }
   .menu {
     margin: 15px 15px 0 15px;
