@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+:root {
+  --colorPrimary: skyblue;
+  --colorSecondary: white;
+  --colorAncent: black;
+}
+
+body {
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--colorAncent);
+  color: var(--colorSecondary);
+  transition: 0.5s ease-in;
+}
+
+.project-title, .app-title{
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 85vh;
+}
+
+.game-info, .game-score {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 5vh;
+}
+.game-info{
+    margin: 10px 0;
+}
+.score {
+  color: red;
+  font-size: 16pt;
+}
+
+.board {
+  /* background-color: var(--colorSecondary); */
+  width: 360px;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.box, .selected-color {
+  width: 30px;
+  height: 30px;
+  background-color: var(--colorAncent);
+  border-radius: 50%;
+  margin: 3px;
+  cursor: pointer;
+}
+
+
+/* Love icon */
+.love{
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  margin-top: 3px;
+  margin-left: -2px;
+  background-color: red;
+  transform: rotate(45deg);
+  display: inline;
+}
+
+.love::after,
+.love::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.love::after {
+  top: -5px;
+}
+
+.love::before {
+  left: -5px;
+}
+
+.text-footer{
+  margin: 0 10px;
+  text-align: center;
+}
+
+.author {
+  color: deeppink;
+}
+
+@media only screen and (max-width: 500px) {
+  .container {
+    flex-direction: column;
+  }
+  .menu {
+    margin: 15px 15px 0 15px;
+    width: inherit;
+  }
+  .content {
+    margin: 0 15px;
+    padding: 10px 15px;
+  }
+  .diagram {
+    margin: 0 15px;
+  }
+  .title, .result-code, .play-btn {
+    margin: 5px 0;
+  }
+  .menu,
+  .content,
+  .diagram {
+    width: 215px;
+  }
+}
+/* @media only screen and (max-height: 700px) {
+  .a::before {
+    top: 55px;
+  }
+} */
