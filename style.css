@@ -6,7 +6,7 @@
 }
 
 :root {
-  --colorPrimary: skyblue;
+  --colorPrimary: midnightblue;
   --colorSecondary: white;
   --colorAncent: black;
 }
@@ -42,7 +42,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 5vh;
   min-width: 300px;
 }
 
@@ -98,6 +97,10 @@ body {
   color: skyblue;
 }
 
+.rank {
+  font-size: 20pt;
+}
+
 .board {
   /* background-color: var(--colorSecondary); */
   width: 360px;
@@ -110,11 +113,44 @@ body {
 .box, .selected-color {
   width: 30px;
   height: 30px;
-  background-color: var(--colorAncent);
+  background-color: var(--colorPrimary);
   border-radius: 50%;
   margin: 3px;
   cursor: pointer;
   outline: none;
+}
+
+/* socialButton */
+.follow-me {
+  display: none;
+  margin: 20px 0;
+}
+
+.social-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 25vh;
+  display: none;
+  transition: 0.75s ease;
+}
+
+.social-button {
+  background-color:  lightyellow;
+  padding: 5px 5px 3px 5px;
+  border-radius: 50%;
+  position: relative;
+  /* top: 47px; */
+}
+
+.social-button:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 3px 5px rgba(100,100,100, 0.7);
+}
+
+.social-icon {
+  max-width: 25px;
+  max-height: 25px;
 }
 
 /* Love icon */

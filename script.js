@@ -10,15 +10,17 @@ const time = document.querySelector('.time');
 const rank = document.querySelector('.rank');
 const greeting = document.querySelector('.greeting');
 const labelReload = document.querySelector('.label-reload');
+const followMe = document.querySelector('.follow-me');
+const socialContainer = document.querySelector('.social-container');
 
 const colors = [
   '#9369C6', '#54B5D2', '#B7D332' , '#FAF057', '#F9AF15', '#EE4C52'
 ]
 const rankTitle = [
-  '&#127775; &#127775; &#127775; &#127775; &#127775;',
-  '&#127775; &#127775; &#127775; &#127775;',
-  '&#127775; &#127775; &#127775;',
-  '&#127775; &#127775;',
+  '&#127775;&#127775;&#127775;&#127775;&#127775;',
+  '&#127775;&#127775;&#127775;&#127775;',
+  '&#127775;&#127775;&#127775;',
+  '&#127775;&#127775;',
   '&#127775;',
 ]
 let score = 100;
@@ -67,11 +69,13 @@ function animateLight(){
         }else if (score == "0") {
           gameInfo.style.display = 'none';
           gameInfo.style.display = 'none';
-          gameWon.style.minHeight = '25vh';
+          gameWon.style.minHeight = '50vh';
           greeting.innerHTML = "Congratulations!";
           pickRank()
           reloadButton.style.display = 'block';
           labelReload.innerHTML = 'Play again ?';
+          followMe.style.display = 'block';
+          socialContainer.style.display = 'flex';
           clearTimeout(clearTime);
         }
       }
@@ -154,16 +158,16 @@ function starTime(){
 }
 
 function pickRank(){
-  if (minute == 0 && second >= 0 && second <= 45) {
+  if (minute == 0 && second >= 0 && second <= 55) {
     rank.innerHTML = rankTitle[0];
     message.innerHTML = "You have strong immunity, to fight virus. &#128157;";
-  }else if (minute == 1 && second >= 0 && second <= 15) {
+  }else if (minute == 1 && second >= 0 && second <= 25) {
     rank.innerHTML = rankTitle[1];
     message.innerHTML = "You have good immunity, to fight virus. &#128150;";
-  }else if (minute == 1 && second >= 0 && second <= 30) {
+  }else if (minute == 1 && second >= 25 && second <= 45) {
     rank.innerHTML = rankTitle[2];
     message.innerHTML = "You have medium immunity, to fight virus. &#128155;";
-  }else if (minute == 1 && second >= 0 && second <= 45) {
+  }else if (minute == 1 && second >= 45 && second <= 59) {
     rank.innerHTML = rankTitle[3];
     message.innerHTML = "You have low immunity, to fight virus. &#128148;";
   }else if (minute >= 2) {
